@@ -1,0 +1,7 @@
+{
+ "must_mention": [
+  "two people built an OpenGL ES 3.0 conformant Linux GPU driver for the M4 Mac Mini and MacBook Neo in about a month",
+  "it runs Chrome and Firefox WebGL and Minecraft at around 200fps",
+  "done by clean-room reverse engineering of Apple's AGX firmware ABI; not yet ready for end users"
+ ]
+}

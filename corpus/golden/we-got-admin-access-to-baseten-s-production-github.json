@@ -1,0 +1,7 @@
+{
+ "must_mention": [
+  "Strix, an autonomous hacking agent, found a live GitHub personal access token for Baseten within about 25 minutes",
+  "the token had admin and push rights on Baseten's main product repo and GitOps repo",
+  "the scan ran against *.baseten.co with no credentials or source code"
+ ]
+}

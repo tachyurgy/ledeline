@@ -1,0 +1,7 @@
+{
+ "must_mention": [
+  "Capsule packages a whole app (HTML UI, schema, SQLite data) into one portable .capsule file",
+  "no cloud, servers or accounts; files are shared like documents",
+  "apps are generated from prompts and editable via AI or MCP tools"
+ ]
+}
