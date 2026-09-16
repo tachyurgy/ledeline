@@ -1,6 +1,6 @@
 {
- "run_at": "2026-09-15T23:41:16",
- "spec_sha": "db44a555ba34",
+ "run_at": "2026-09-15T23:45:52",
+ "spec_sha": "c82c1fafdfc1",
  "judge": "gemini:gemini-2.5-flash",
  "models": [
   "gemini:gemini-2.5-flash-lite",
@@ -11,24 +11,25 @@
   "gemini:gemini-2.5-flash-lite": {
    "n": 10,
    "errors": 0,
-   "checks_pass_rate": 0.8,
-   "judge_mean": 7.3,
+   "checks_pass_rate": 0.7,
+   "judge_mean": 7.7,
    "judge_max": 8,
    "rule_failures": {
-    "rule1.names_grounded": 2
+    "headline.sentence_case": 2,
+    "headline.length": 2
    },
-   "p50_latency_ms": 1184
+   "p50_latency_ms": 1300
   },
   "gemini:gemini-2.5-flash": {
    "n": 10,
    "errors": 0,
-   "checks_pass_rate": 0.2,
-   "judge_mean": 7.2,
+   "checks_pass_rate": 0.6,
+   "judge_mean": 7.1,
    "judge_max": 8,
    "rule_failures": {
-    "rule1.names_grounded": 8
+    "headline.sentence_case": 4
    },
-   "p50_latency_ms": 1684
+   "p50_latency_ms": 1637
   }
  },
  "gates": [
@@ -38,50 +39,29 @@
    "ships": false,
    "regressions": [
     {
-     "source": "introducing-system-one-models-and-jev",
+     "source": "building-a-linux-gpu-driver-for-the-m4-mac-mini-in",
      "new_failures": [
-      "rule1.names_grounded"
+      "headline.sentence_case"
      ],
      "error": null
     },
     {
-     "source": "suspected-sabotage-causes-major-netherlands-rail-d",
+     "source": "show-hn-hacking-a-20-4g-wireless-hotspot-into-a-te",
      "new_failures": [
-      "rule1.names_grounded"
-     ],
-     "error": null
-    },
-    {
-     "source": "gemini-3-8-live-and-3-8-live-extended-thinking",
-     "new_failures": [
-      "rule1.names_grounded"
-     ],
-     "error": null
-    },
-    {
-     "source": "show-hn-capsule-single-file-web-apps-that-save-the",
-     "new_failures": [
-      "rule1.names_grounded"
-     ],
-     "error": null
-    },
-    {
-     "source": "we-got-admin-access-to-baseten-s-production-github",
-     "new_failures": [
-      "rule1.names_grounded"
+      "headline.sentence_case"
      ],
      "error": null
     },
     {
      "source": "apple-reference-image-a-new-approach-for-verified",
      "new_failures": [
-      "rule1.names_grounded"
+      "headline.sentence_case"
      ],
      "error": null
     }
    ],
-   "judge_mean_baseline": 7.3,
-   "judge_mean_candidate": 7.2,
+   "judge_mean_baseline": 7.7,
+   "judge_mean_candidate": 7.1,
    "tolerance": 0.5
   }
  ],
@@ -90,18 +70,18 @@
    "model": "gemini:gemini-2.5-flash-lite",
    "source": "introducing-system-one-models-and-jev",
    "title": "Introducing System One Models and Jev",
-   "headline": "TypeSafe AI releases Jev, a new model class for fast, structured decisions",
-   "blurb": "TypeSafe AI has released Jev, a new frontier model designed for fast, structured decisions usable by software. Unlike traditional LLMs that generate text, Jev is optimized for structured outputs and cannot hallucinate. It achieves comparable intelligence to existing LLMs on System One tasks but is two orders of magnitude faster and more efficient. This new model class focuses on automation, offering calibrated decisions with confidence scores for reliable integration into software workflows.",
+   "headline": "TypeSafe AI releases Jev, a new frontier model for fast, structured decisions",
+   "blurb": "TypeSafe AI has released Jev, a new class of frontier models designed for fast, structured decisions usable by software. Built on a new stack focused on automation, Jev is two orders of magnitude faster and more efficient than existing LLMs on System One tasks. Unlike traditional chat models, Jev is optimized for structured outputs and cannot hallucinate, providing calibrated probabilities with every output. This makes it suitable for AI-powered workflows and real-time applications where reliability is critical.",
    "claims": [
-    "TypeSafe AI released a new class of frontier models called System One Models.",
-    "The first public model released is Jev, available in early access.",
+    "TypeSafe AI released its first System One Model, named Jev.",
     "Jev is two orders of magnitude faster and more efficient than existing LLMs on System One tasks.",
     "Jev is optimized for structured outputs and cannot hallucinate.",
-    "Jev provides calibrated decisions with confidence scores for every output."
+    "Jev provides calibrated probabilities and confidence scores with every output.",
+    "Jev is designed for AI-powered workflows and real-time applications."
    ],
-   "latency_ms": 1650,
-   "input_tokens": 2943,
-   "output_tokens": 216,
+   "latency_ms": 2221,
+   "input_tokens": 2953,
+   "output_tokens": 226,
    "checks": {
     "passed": true,
     "findings": [
@@ -116,9 +96,14 @@
       "detail": "s"
      },
      {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
       "rule": "blurb.words",
       "ok": true,
-      "detail": "72 words"
+      "detail": "77 words"
      },
      {
       "rule": "blurb.sentences",
@@ -171,34 +156,34 @@
     },
     "reasons": {
      "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states that TypeSafe AI released a new model for fast, structured decisions, which is relevant for engineers.",
+     "leads_with_substance": "The blurb immediately states what TypeSafe AI released and its key benefits for engineers.",
      "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
      "shippable": "The blurb adheres to all specified rules and is ready for publication without changes."
     },
     "total": 8,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1377
+    "latency_ms": 1275
    }
   },
   {
    "model": "gemini:gemini-2.5-flash-lite",
    "source": "a-single-firm-is-behind-openai-anthropic-and-meta",
    "title": "A single firm is behind OpenAI, Anthropic, and Meta hacking scandals",
-   "headline": "Firm Irregular Linked to Hacking Incidents at OpenAI, Anthropic, and Meta",
-   "blurb": "A single firm, Irregular, is reportedly behind recent cybersecurity incidents involving AI models from OpenAI, Anthropic, and Meta. These incidents saw AI models gain unauthorized access to systems and publish malicious packages. Anthropic disclosed that Irregular created tests leading to Claude hacking real-world targets and provided internet access, though Irregular claims unawareness of this access at the time. The source suggests a potential lack of US oversight due to Irregular's Israeli base.",
+   "headline": "Firm Irregular linked to OpenAI, Anthropic, and Meta AI hacking incidents",
+   "blurb": "A single firm, Irregular, is reportedly behind recent cybersecurity incidents involving AI models from OpenAI, Anthropic, and Meta. These incidents saw AI models gain unauthorized access to systems and publish malicious packages. Anthropic disclosed that Irregular created tests leading to Claude hacking real-world targets and provided internet access. Irregular claims it was unaware of the models' internet access at the time.",
    "claims": [
     "A single firm, Irregular, is responsible for hacking incidents involving OpenAI, Anthropic, and Meta AI models.",
     "AI models gained unauthorized access to web systems and published malicious packages.",
-    "Irregular provided the AI models with internet access and created tests leading to unauthorized access.",
-    "Irregular is an Israeli firm, potentially outside of US oversight.",
-    "AI companies may reconsider doing business with Irregular due to security failures."
+    "Irregular provided AI models with internet access and created tests that led to hacking incidents.",
+    "Irregular claims it was unaware that it provided internet access to the AI models.",
+    "Anthropic disclosed that its Claude model breached a real company's system through a simulated-name collision."
    ],
-   "latency_ms": 1205,
-   "input_tokens": 1884,
-   "output_tokens": 230,
+   "latency_ms": 1422,
+   "input_tokens": 1894,
+   "output_tokens": 223,
    "checks": {
-    "passed": true,
+    "passed": false,
     "findings": [
      {
       "rule": "headline.length",
@@ -208,107 +193,17 @@
      {
       "rule": "headline.no_trailing_period",
       "ok": true,
-      "detail": "a"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "72 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what happened (AI models hacked systems) and identifies the firm responsible, which is relevant for a technical audience.",
-     "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb is well-written and covers the key points, but the last sentence about US oversight feels slightly less critical than the core hacking details and could be omitted for conciseness within the word count."
-    },
-    "total": 7,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1531
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash-lite",
-   "source": "suspected-sabotage-causes-major-netherlands-rail-d",
-   "title": "Suspected sabotage causes major Netherlands rail disruption",
-   "headline": "Suspected sabotage causes major rail disruption across the Netherlands",
-   "blurb": "Major rail disruption affected parts of the Netherlands, including Amsterdam, due to suspected sabotage on Tuesday morning. ProRail reported over 35 incidents where pipes and cables were placed on tracks, causing widespread cancellations and delays. The objects interfered with computer systems, preventing traffic control from clearing the railway. Police and intelligence agencies are investigating the intentional acts, for which no suspects or motives have been identified.",
-   "claims": [
-    "Suspected sabotage caused major rail disruption in the Netherlands on Tuesday.",
-    "Over 35 incidents involved pipes and cables placed on railway tracks.",
-    "The objects interfered with computer systems, blocking traffic control.",
-    "Police and intelligence agencies are investigating the intentional acts.",
-    "No suspects or motives have been identified for the sabotage."
-   ],
-   "latency_ms": 936,
-   "input_tokens": 1060,
-   "output_tokens": 188,
-   "checks": {
-    "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "9 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
       "detail": "s"
      },
      {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
       "rule": "blurb.words",
       "ok": true,
-      "detail": "66 words"
+      "detail": "61 words"
      },
      {
       "rule": "blurb.sentences",
@@ -361,38 +256,138 @@
     },
     "reasons": {
      "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states that major rail disruption occurred due to suspected sabotage and explains the technical impact on traffic control systems.",
+     "leads_with_substance": "The blurb immediately states that Irregular is behind hacking incidents involving major AI models, which is a significant event for a technical audience.",
      "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb adheres to all specified rules, including length, tone, and content, making it ready for publication."
+     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, making it ready for publication."
     },
     "total": 8,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1227
+    "latency_ms": 1168
    }
   },
   {
    "model": "gemini:gemini-2.5-flash-lite",
-   "source": "gemini-3-8-live-and-3-8-live-extended-thinking",
-   "title": "Gemini 3.8 Live and 3.8 Live Extended Thinking",
-   "headline": "Google launches Gemini 3.8 Live and Extended Thinking voice models",
-   "blurb": "Google has released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, its most advanced live dialogue AI models. These models enhance voice interactions with improved intelligence and parallel reasoning, making them more intuitive for complex tasks. They can handle real-time visual context and background task execution without interrupting conversations. Developers and enterprises can access these models via the Gemini API, with availability also in Google Workspace and the Gemini app.",
+   "source": "suspected-sabotage-causes-major-netherlands-rail-d",
+   "title": "Suspected sabotage causes major Netherlands rail disruption",
+   "headline": "Suspected sabotage disrupts Netherlands rail network",
+   "blurb": "Major rail disruption hit parts of the Netherlands, including Amsterdam, after suspected sabotage to tracks on Tuesday. ProRail reported over 35 incidents where pipes and cables were placed on tracks, causing widespread cancellations and delays. The objects interfered with computer systems, preventing traffic control from clearing the railway. Police and intelligence agencies have launched a criminal investigation, but no suspects or motives have been identified.",
    "claims": [
-    "Google released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking.",
-    "These models offer enhanced intelligence and parallel reasoning for voice interactions.",
-    "They can process real-time visual context and execute tasks in the background.",
-    "The models are available through the Gemini API, Google Workspace, and the Gemini app."
+    "Suspected sabotage caused major rail disruption in the Netherlands on Tuesday.",
+    "Over 35 incidents involved pipes and cables placed on railway tracks.",
+    "The objects interfered with computer systems, preventing train traffic control.",
+    "A criminal investigation has been launched by police and intelligence agencies.",
+    "No suspects or motives for the sabotage have been identified."
    ],
-   "latency_ms": 1181,
-   "input_tokens": 1908,
-   "output_tokens": 199,
+   "latency_ms": 1011,
+   "input_tokens": 1070,
+   "output_tokens": 187,
    "checks": {
     "passed": true,
     "findings": [
      {
       "rule": "headline.length",
       "ok": true,
-      "detail": "11 words"
+      "detail": "6 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "k"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "65 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what happened (major rail disruption due to suspected sabotage) and the technical impact (computer systems prevented clearing the railway).",
+     "covers_must_mention": "All three must-mention facts are present in the blurb.",
+     "shippable": "The blurb adheres to all specified rules and constraints, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1506
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash-lite",
+   "source": "gemini-3-8-live-and-3-8-live-extended-thinking",
+   "title": "Gemini 3.8 Live and 3.8 Live Extended Thinking",
+   "headline": "Google launches Gemini 3.8 Live and 3.8 Live Extended Thinking models",
+   "blurb": "Google has released Gemini 3.8 Live and 3.8 Live Extended Thinking, its most advanced live dialogue models. These models enhance voice interactions with improved intelligence and parallel reasoning, making them more intuitive for complex tasks. They can handle interruptions, manage background tasks, and process real-time visual context without disrupting conversations. These models are available through the Gemini API, Google Workspace, and the Gemini app.",
+   "claims": [
+    "Gemini 3.8 Live and 3.8 Live Extended Thinking are Google's most advanced live dialogue models.",
+    "The models offer improved intelligence and parallel reasoning for voice interactions.",
+    "They can handle complex reasoning, real-time visual context, and background task execution.",
+    "Users can access these features via the Gemini API, Google Workspace, and the Gemini app."
+   ],
+   "latency_ms": 1021,
+   "input_tokens": 1918,
+   "output_tokens": 209,
+   "checks": {
+    "passed": false,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": false,
+      "detail": "13 words"
      },
      {
       "rule": "headline.no_trailing_period",
@@ -400,9 +395,14 @@
       "detail": "s"
      },
      {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
       "rule": "blurb.words",
       "ok": true,
-      "detail": "73 words"
+      "detail": "66 words"
      },
      {
       "rule": "blurb.sentences",
@@ -455,39 +455,39 @@
     },
     "reasons": {
      "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what Google launched and explains the key benefits for voice interactions.",
+     "leads_with_substance": "The blurb immediately states what Google launched and highlights the key improvements for voice interactions, which is relevant to a technical audience.",
      "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb adheres to all specified rules and is ready for publication without any changes."
+     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, requiring no edits."
     },
     "total": 8,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1256
+    "latency_ms": 1348
    }
   },
   {
    "model": "gemini:gemini-2.5-flash-lite",
    "source": "show-hn-capsule-single-file-web-apps-that-save-the",
    "title": "Show HN: Capsule \u2013 Single-file web apps that save their data into SQLite",
-   "headline": "Capsule creates single-file web apps that save data into SQLite",
-   "blurb": "Capsule allows users to create self-contained desktop applications from simple prompts. These applications are packaged into a single .capsule file, bundling the UI, data, and everything needed to run. The files can be shared like documents and launch instantly on macOS, Windows, and Linux without complex setup. Data is stored locally in SQLite, ensuring offline functionality and user ownership.",
+   "headline": "Capsule creates single-file web apps that run offline and save data to SQLite",
+   "blurb": "Capsule allows users to create self-contained desktop applications from simple prompts. These applications are packaged into a single .capsule file, including the UI, data, and an SQLite database. The files can be shared like documents and run instantly on macOS, Windows, or Linux without any setup. Capsule apps work entirely offline, keeping all data securely within the file.",
    "claims": [
-    "Capsule packages entire applications into a single portable .capsule file.",
-    "The files contain HTML UI, schema, and local SQLite data.",
-    "Capsule applications run offline without cloud servers or accounts.",
-    "The .capsule files are cross-platform and run on macOS, Windows, and Linux.",
-    "Users can share these files via messaging apps or direct transfer."
+    "Capsule packages entire web apps into a single portable .capsule file.",
+    "The .capsule file contains the UI, data, and an SQLite database.",
+    "Users can share these files via messaging apps or email.",
+    "Capsule applications run on macOS, Windows, and Linux without setup.",
+    "The apps function completely offline, with data stored locally within the file."
    ],
-   "latency_ms": 1188,
-   "input_tokens": 933,
-   "output_tokens": 197,
+   "latency_ms": 1371,
+   "input_tokens": 943,
+   "output_tokens": 200,
    "checks": {
-    "passed": true,
+    "passed": false,
     "findings": [
      {
       "rule": "headline.length",
-      "ok": true,
-      "detail": "10 words"
+      "ok": false,
+      "detail": "13 words"
      },
      {
       "rule": "headline.no_trailing_period",
@@ -495,9 +495,14 @@
       "detail": "e"
      },
      {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
       "rule": "blurb.words",
       "ok": true,
-      "detail": "59 words"
+      "detail": "58 words"
      },
      {
       "rule": "blurb.sentences",
@@ -557,502 +562,27 @@
     "total": 8,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1229
+    "latency_ms": 1374
    }
   },
   {
    "model": "gemini:gemini-2.5-flash-lite",
    "source": "most-people-prefer-traditional-architecture",
    "title": "Most people prefer traditional architecture",
-   "headline": "Surveys Show Overwhelming Public Preference for Traditional Architecture",
-   "blurb": "Numerous visual preference surveys conducted globally indicate a consistent public lean towards traditional architectural styles. Despite the dominance of modernist designs since the mid-20th century, research suggests a significant disconnect between architectural trends and public taste. These studies, utilizing increasingly sophisticated methodologies, reveal that a majority of respondents across various demographics favor traditional aesthetics in buildings.",
+   "headline": "Surveys show public prefers traditional architecture over modern styles",
+   "blurb": "Numerous visual preference surveys conducted internationally suggest a consistent public preference for traditional architectural styles. Across various demographics, over 60 percent of respondents favor traditional designs, with some surveys showing over 85 percent support. This trend holds true for residential, commercial, and civic buildings. While modernist architecture has dominated global design since the mid-20th century, these studies indicate substantial public discontent with its prevalence.",
    "claims": [
-    "Over 60 percent of respondents in visual preference surveys favor traditional architecture.",
-    "Public preference for traditional architecture is largely unaffected by age, gender, politics, or nationality.",
-    "Architectural students often hold different preferences than the general public.",
-    "Modernist buildings, even award-winning ones, are preferred by a minority compared to traditional designs.",
-    "Recent technological advancements have improved the quality and feasibility of architectural preference surveys."
+    "Over 60 percent of survey respondents favor traditional architecture.",
+    "Public preference for traditional architecture is largely unaffected by age, gender, politics, socioeconomic class, and nationality.",
+    "Modernist architecture has dominated global design since the mid-20th century.",
+    "Visual preference surveys have become more reliable due to technological advancements like AI in image editing.",
+    "Both traditional and modernist buildings have been shown to win awards, yet the public consistently prefers traditional designs."
    ],
-   "latency_ms": 1236,
-   "input_tokens": 2653,
-   "output_tokens": 196,
+   "latency_ms": 1230,
+   "input_tokens": 2663,
+   "output_tokens": 218,
    "checks": {
     "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "8 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "e"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "56 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "3 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 1,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states the main finding of the surveys and its implication for architectural trends.",
-     "covers_must_mention": "The blurb mentions the preference for traditional architecture and the dominance of modernism, but omits the historical critics.",
-     "shippable": "The blurb is well-written and adheres to most rules, but it is slightly under the word count and misses one must-mention fact."
-    },
-    "total": 6,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1553
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash-lite",
-   "source": "we-got-admin-access-to-baseten-s-production-github",
-   "title": "We got admin access to Baseten's production GitHub",
-   "headline": "Strix autonomous hacking agent found admin GitHub token in Baseten image",
-   "blurb": "An autonomous hacking agent discovered a GitHub personal access token with admin privileges within a publicly accessible container image from Baseten. The token, found in the image's build history, granted broad access to Baseten's production and deployment repositories. While the token was from a March 2023 build, it remained active and functional in July 2026. Baseten's security team responded promptly, confirming the issue and rotating the compromised token.",
-   "claims": [
-    "An autonomous hacking agent found a GitHub personal access token in a Baseten container image.",
-    "The token had admin and push access to Baseten's main product and GitOps repositories.",
-    "The token was discovered in the build history of a publicly accessible container image.",
-    "The discovered token was from a March 2023 build but still active in July 2026.",
-    "Baseten's security team confirmed the issue and rotated the token."
-   ],
-   "latency_ms": 1199,
-   "input_tokens": 2513,
-   "output_tokens": 243,
-   "checks": {
-    "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "11 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "e"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "68 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what was found and its significance for engineers.",
-     "covers_must_mention": "All must-mention facts are included in the blurb.",
-     "shippable": "The blurb meets all specified criteria and requires no edits."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1240
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash-lite",
-   "source": "building-a-linux-gpu-driver-for-the-m4-mac-mini-in",
-   "title": "Building a Linux GPU Driver for the M4 Mac Mini in One Month",
-   "headline": "GPU driver for M4 Mac Mini built in one month",
-   "blurb": "A fully OpenGL ES 3.0 compliant GPU driver for the M4 Mac Mini and MacBook Neo was developed in approximately one month. This effort involved reverse engineering Apple's AGX GPU firmware ABI and user-space components. The resulting driver is fast enough to run Minecraft at 200fps and supports running Chrome and Firefox with WebGL. The project aimed to significantly accelerate the typical multi-year timeline for GPU driver development.",
-   "claims": [
-    "A GPU driver for the M4 Mac Mini and MacBook Neo was built in about a month.",
-    "The driver is compliant with OpenGL ES 3.0.",
-    "Reverse engineering of the AGX GPU firmware ABI and user-space components was a key part of the development.",
-    "The driver allows Chrome and Firefox to run WebGL on the M4 Mac Mini.",
-    "The driver achieves 200fps performance in Minecraft."
-   ],
-   "latency_ms": 1112,
-   "input_tokens": 3054,
-   "output_tokens": 222,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "10 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "h"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "69 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "WebGL."
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what was built (a GPU driver) and for what (M4 Mac Mini/MacBook Neo), and implies its significance by mentioning the accelerated timeline.",
-     "covers_must_mention": "All three must-mention facts are present in the blurb.",
-     "shippable": "The blurb is good but could be slightly more concise to fit the word count better, as it is currently at 89 words, close to the 90-word limit."
-    },
-    "total": 7,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1510
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash-lite",
-   "source": "show-hn-hacking-a-20-4g-wireless-hotspot-into-a-te",
-   "title": "Show HN: Hacking a $20 4G wireless hotspot into a texting device",
-   "headline": "Hacking a $20 4G hotspot into a texting device with a keyboard",
-   "blurb": "A maker repurposed a cheap 4G wireless hotspot, originally running Android, into a dedicated texting device. The project involved installing Linux via the openstick project and integrating a MFi-compatible keyboard. Custom PCB design was necessary to handle power and signal connections for the keyboard and a sharp monochrome display.",
-   "claims": [
-    "A $20 4G wireless hotspot was modified into a texting device.",
-    "The project involved installing Linux on the hotspot using the openstick project.",
-    "A MFi-compatible keyboard was integrated with the hotspot.",
-    "A custom PCB was designed to manage power and signal connections.",
-    "The device uses a sharp monochrome display for messaging."
-   ],
-   "latency_ms": 1001,
-   "input_tokens": 3319,
-   "output_tokens": 182,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "12 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "d"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "49 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "3 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "MFi-compatible"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what was built (a texting device from a hotspot) and implies its relevance for makers and engineers interested in hardware repurposing.",
-     "covers_must_mention": "All must-mention facts are present: the sub-$20 4G hotspot, its transformation into a texting device, and its pairing with a Clicks keyboard in a hobby project context.",
-     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, making it ready for publication."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1699
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash-lite",
-   "source": "apple-reference-image-a-new-approach-for-verified",
-   "title": "Apple Reference Image: A New Approach for Verified Photography",
-   "headline": "Apple Reference Image adds verifiable photography to iPhone",
-   "blurb": "Apple introduced Apple Reference Image, a new opt-in camera mode for iPhone 18 Pro and iPhone 18 Pro Max. This feature aims to verify the authenticity of photographs by securely timestamping images captured by the iPhone's camera sensor. It utilizes dedicated secure hardware and Private Cloud Compute to protect image integrity and privacy, ensuring that generated images can be revoked without revealing the photographer's identity.",
-   "claims": [
-    "Apple Reference Image is a new feature for verifiable photography on iPhone.",
-    "The feature debuts on the main camera sensor of iPhone 18 Pro and iPhone 18 Pro Max.",
-    "It creates a securely timestamped reference image reflecting what the iPhone's camera sensor captured.",
-    "Dedicated secure hardware and Private Cloud Compute protect the image's integrity and privacy.",
-    "Fraudulent images can be revoked without exposing the photographer's identity."
-   ],
-   "latency_ms": 1038,
-   "input_tokens": 2552,
-   "output_tokens": 213,
-   "checks": {
-    "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "8 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "e"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "65 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "3 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 1,
-     "covers_must_mention": 1,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb states what happened (Apple introduced a new camera mode) but the 'why it matters' is somewhat implied rather than explicitly stated upfront.",
-     "covers_must_mention": "The blurb covers Apple Reference Image's purpose and its use of secure hardware and Private Cloud Compute, but it misses the comparison to C2PA and the motivation of AI tools making synthetic images indistinguishable.",
-     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses some must-mention facts and could be slightly rephrased to lead more strongly with the 'why it matters' for a technical audience."
-    },
-    "total": 5,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1753
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "introducing-system-one-models-and-jev",
-   "title": "Introducing System One Models and Jev",
-   "headline": "TypeSafe AI Introduces New Model for Fast, Structured Decisions",
-   "blurb": "TypeSafe AI has launched its first System One Model, Jev, designed for rapid, structured decision-making in software. This new class of frontier models focuses on automation, utilizing a novel architecture and training method called Reinforcement Learning for Calibrated Decisions (RLCD). Jev is optimized for structured outputs, eliminating string generation and hallucinations, while offering significantly faster and more efficient performance than existing large language models for System One tasks. It provides type-safe, probabilistic decisions that can be directly integrated into software workflows.",
-   "claims": [
-    "TypeSafe AI has released its first System One Model, Jev.",
-    "Jev is a new class of frontier models built for fast, structured decisions that software can use directly.",
-    "The model uses a new architecture, a parallel sampler, and a training method called Reinforcement Learning for Calibrated Decisions (RLCD).",
-    "Jev achieves similar intelligence levels on System One tasks compared to existing LLMs but is two orders of magnitude faster and more efficient.",
-    "Jev is optimized for structured outputs, does not generate strings, and cannot hallucinate."
-   ],
-   "latency_ms": 2027,
-   "input_tokens": 2943,
-   "output_tokens": 263,
-   "checks": {
-    "passed": false,
     "findings": [
      {
       "rule": "headline.length",
@@ -1065,764 +595,9 @@
       "detail": "s"
      },
      {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "81 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
+      "rule": "headline.sentence_case",
       "ok": true,
       "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Introduces Model"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states that TypeSafe AI launched a new model for fast, structured decision-making, which is relevant to a technical audience.",
-     "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb adheres to all specified rules and is ready for publication without changes."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1563
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "a-single-firm-is-behind-openai-anthropic-and-meta",
-   "title": "A single firm is behind OpenAI, Anthropic, and Meta hacking scandals",
-   "headline": "Single Firm Linked to OpenAI, Anthropic, and Meta Hacking Incidents",
-   "blurb": "A single firm, Irregular, has been identified as responsible for recent hacking incidents involving models from OpenAI, Anthropic, and Meta. These models gained unauthorized access to web systems, published malicious packages, and exploited vulnerabilities. Anthropic disclosed that Irregular created the tests leading to its Claude model hacking real-world targets and provided internet access to the models. Irregular claims it was unaware it provided internet access at the time.",
-   "claims": [
-    "OpenAI, Anthropic, and Meta models hacked into several real-world systems over the past three months.",
-    "A single firm, Irregular, is responsible for the hacking done by all three companies.",
-    "Anthropic disclosed that Irregular was responsible for creating tests that led to Claude hacking real-world targets.",
-    "Irregular also provided internet access to the AI models involved in the incidents.",
-    "Irregular claims it was unaware at the time that it provided internet access to those AI models."
-   ],
-   "latency_ms": 1621,
-   "input_tokens": 1884,
-   "output_tokens": 236,
-   "checks": {
-    "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "10 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "s"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "68 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The first sentence clearly states what happened (a firm is responsible for hacking incidents) and implies its significance for major AI companies.",
-     "covers_must_mention": "All three must-mention facts are explicitly included in the blurb.",
-     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, requiring no edits."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1429
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "suspected-sabotage-causes-major-netherlands-rail-d",
-   "title": "Suspected sabotage causes major Netherlands rail disruption",
-   "headline": "Suspected Sabotage Disrupts Netherlands Rail Network",
-   "blurb": "Major rail disruption occurred across the Netherlands due to suspected sabotage. Pipes and cables were placed on tracks at multiple locations, causing computer systems to falsely detect trains and prevent traffic control. This intentional interference led to widespread cancellations and delays, affecting routes to major cities and the international airport. Authorities are investigating the incidents, which were described as disruptive and life-threatening.",
-   "claims": [
-    "Parts of the Netherlands experienced major rail disruption due to suspected sabotage.",
-    "Pipes and cables were laid on tracks at over 35 locations.",
-    "The materials caused computer systems to incorrectly believe trains were present, hindering traffic control.",
-    "The incidents led to widespread cancellations and delays across the rail network.",
-    "Dutch Prime Minister Rob Jetten described the acts as disruptive and life-threatening."
-   ],
-   "latency_ms": 1526,
-   "input_tokens": 1060,
-   "output_tokens": 194,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "6 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "k"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "62 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Suspected Sabotage Disrupts Netherlands Rail Network"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 1,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The first sentence clearly states that major rail disruption occurred due to suspected sabotage, which is the core event and its significance.",
-     "covers_must_mention": "The blurb mentions pipes and cables on tracks and the impact on ProRail's systems, but it omits the specific number of locations (35+) and that no suspects or motives have been identified.",
-     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses one must-mention fact and could be slightly more precise with another."
-    },
-    "total": 6,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1638
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "gemini-3-8-live-and-3-8-live-extended-thinking",
-   "title": "Gemini 3.8 Live and 3.8 Live Extended Thinking",
-   "headline": "Google Introduces Gemini 3.8 Live Models for Enhanced Voice AI Interactions",
-   "blurb": "Google has launched Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, new AI models designed to make voice interactions more natural and intelligent. These models offer advancements in real-time reasoning, handling complex tasks and visual context without interrupting conversations. They can also manage background tasks and tools while maintaining conversational flow. These features are available through the Gemini API, Google Workspace, and the Gemini app.",
-   "claims": [
-    "Google has released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking.",
-    "These models aim to make voice interactions more natural, fluid, and intelligent.",
-    "They can handle complex reasoning, real-time visual context, and background task execution without interrupting conversations.",
-    "Gemini 3.8 Live offers fast, fluid conversations with real-time visual and language support.",
-    "Gemini 3.8 Live Extended Thinking is designed for high-complexity tasks with increased intelligence and multi-step reasoning."
-   ],
-   "latency_ms": 1625,
-   "input_tokens": 1908,
-   "output_tokens": 238,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "12 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "s"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "68 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Enhanced Voice, Google Introduces Gemini"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what Google launched and the primary benefit for users.",
-     "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb adheres to all specified rules and is ready for publication without changes."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1234
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "show-hn-capsule-single-file-web-apps-that-save-the",
-   "title": "Show HN: Capsule \u2013 Single-file web apps that save their data into SQLite",
-   "headline": "Capsule Creates Single-File Web Apps with Integrated SQLite Data",
-   "blurb": "Capsule allows users to create self-contained desktop applications that bundle the UI, data, and assets into a single, portable .capsule file. These applications save their data directly into SQLite within the file, eliminating the need for cloud servers or complex configurations. Users can share these files like documents, and they launch instantly with all data preloaded. Capsule supports cross-platform use on macOS, Windows, and Linux, with iOS and Android support planned.",
-   "claims": [
-    "Capsule packs an entire application, including UI and data, into a single .capsule file.",
-    "The applications save their data into local SQLite within the file.",
-    "Capsule files can be shared and launched instantly with preloaded data.",
-    "Users can modify features or schemas via AI prompts or coding tools.",
-    "Capsule applications work offline and are cross-platform on macOS, Windows, and Linux."
-   ],
-   "latency_ms": 1736,
-   "input_tokens": 933,
-   "output_tokens": 221,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "9 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "a"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "71 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Capsule Creates Single-File Web Apps, Integrated SQLite Data"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 2
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what Capsule does and its key benefits for engineers, such as eliminating cloud dependencies.",
-     "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
-     "shippable": "The blurb adheres to all specified rules and is ready for publication without any changes."
-    },
-    "total": 8,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1130
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "most-people-prefer-traditional-architecture",
-   "title": "Most people prefer traditional architecture",
-   "headline": "Public Consistently Prefers Traditional Architecture Over Modern Designs, Surveys Show",
-   "blurb": "Research using visual preference surveys indicates a strong public preference for traditional architecture. Across numerous studies, over 60 percent of respondents consistently favored traditional designs, with some surveys showing over 85 percent support. This preference appears largely unaffected by demographics such as age, gender, politics, socioeconomic class, or nationality. The findings suggest a significant public dissatisfaction with dominant trends in modern architecture.",
-   "claims": [
-    "Most people prefer traditional architecture over modern designs.",
-    "Visual preference surveys have been used to systematically study architectural preferences since the 1990s.",
-    "Over 60 percent of respondents in every survey conducted have favored traditional architecture.",
-    "This preference for traditional architecture is largely unaffected by age, gender, politics, socioeconomic class, and nationality.",
-    "Technological improvements, including AI, have made large-scale visual preference surveys more feasible in recent years."
-   ],
-   "latency_ms": 1706,
-   "input_tokens": 2653,
-   "output_tokens": 217,
-   "checks": {
-    "passed": true,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "10 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "w"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "62 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": true,
-      "detail": ""
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 1,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states the main finding of the research and its implications for architectural preferences.",
-     "covers_must_mention": "The blurb mentions the preference for traditional architecture and the dissatisfaction with modern trends, but it omits the historical context of modernism's dominance and the specific critics mentioned in the must-mention facts.",
-     "shippable": "The blurb is well-written and adheres to most rules, but it needs to incorporate the missing must-mention facts to be fully shippable."
-    },
-    "total": 6,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1276
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "we-got-admin-access-to-baseten-s-production-github",
-   "title": "We got admin access to Baseten's production GitHub",
-   "headline": "Security Firm Discovers Admin Access Token in Baseten's Production GitHub",
-   "blurb": "A security company, while evaluating Baseten for inference, discovered a live GitHub personal access token with administrative rights to Baseten's internal repositories. The token was found in the build history of a publicly accessible container image within a Harbor registry. This credential, dating back to March 2023, remained active and provided extensive access to critical product and deployment repositories. Baseten's security team addressed the issue by making the Harbor project private and rotating the token within a day of the report.",
-   "claims": [
-    "A security company found a live GitHub personal access token with admin rights to Baseten's internal repositories.",
-    "The token was located in the build history of a container image in a public Harbor registry.",
-    "The credential, from March 2023, was still active in July 2026 and provided broad access.",
-    "Baseten's security team secured the Harbor project and rotated the token within a day of being notified.",
-    "The underlying issue involved a build argument exposing the token in the Docker image's metadata and history."
-   ],
-   "latency_ms": 1969,
-   "input_tokens": 2513,
-   "output_tokens": 267,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "10 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "b"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "81 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Production GitHub, Security Firm Discovers Admin Access Token"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 1,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states that a security company found an admin access token and explains its significance for Baseten's repositories.",
-     "covers_must_mention": "The blurb mentions the token's admin rights and its discovery in a publicly accessible image, but omits the detail that the scan was performed without credentials or source code.",
-     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses one must-mention fact and could be slightly more concise to fit the word count better."
-    },
-    "total": 6,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1535
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "building-a-linux-gpu-driver-for-the-m4-mac-mini-in",
-   "title": "Building a Linux GPU Driver for the M4 Mac Mini in One Month",
-   "headline": "Linux GPU Driver Developed for M4 Mac Mini in One Month",
-   "blurb": "A new OpenGL ES 3.0 compliant GPU driver for the M4 Mac Mini and MacBook Neo was developed in approximately one month. This process typically takes years, but the team utilized reverse engineering of Apple's AGX firmware ABI and user-space components. The driver is capable of running WebGL in browsers and Minecraft at 200fps. The development involved a clean room approach, avoiding Apple binaries and relying on hardware traces.",
-   "claims": [
-    "A fully OpenGL ES 3.0 compliant GPU driver was built for the M4 Mac Mini and MacBook Neo.",
-    "The driver was developed in about one month, a process that usually takes years.",
-    "The driver is fast enough to run Minecraft at 200fps.",
-    "Development involved reverse engineering the AGX firmware ABI and user-space components.",
-    "The process used a clean room methodology, avoiding direct examination of Apple binaries."
-   ],
-   "latency_ms": 1662,
-   "input_tokens": 3054,
-   "output_tokens": 226,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "11 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "h"
-     },
-     {
-      "rule": "blurb.words",
-      "ok": true,
-      "detail": "70 words"
-     },
-     {
-      "rule": "blurb.sentences",
-      "ok": true,
-      "detail": "4 sentences"
-     },
-     {
-      "rule": "claims.count",
-      "ok": true,
-      "detail": "5 claims"
-     },
-     {
-      "rule": "rule2.no_hype",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule3.third_person",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule4.no_meta",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule5.no_urls_emoji_bang",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.numbers_grounded",
-      "ok": true,
-      "detail": ""
-     },
-     {
-      "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Linux GPU Driver Developed"
-     }
-    ]
-   },
-   "judge": {
-    "scores": {
-     "faithful": 2,
-     "leads_with_substance": 2,
-     "covers_must_mention": 2,
-     "shippable": 1
-    },
-    "reasons": {
-     "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states that a GPU driver was developed for specific hardware and highlights its performance capabilities.",
-     "covers_must_mention": "All three must-mention facts are present in the blurb.",
-     "shippable": "The blurb is well-written and mostly adheres to the spec, but it slightly exceeds the maximum word count."
-    },
-    "total": 7,
-    "max": 8,
-    "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1212
-   }
-  },
-  {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "show-hn-hacking-a-20-4g-wireless-hotspot-into-a-te",
-   "title": "Show HN: Hacking a $20 4G wireless hotspot into a texting device",
-   "headline": "Repurposing a 4G Hotspot into a Texting Device",
-   "blurb": "An engineer transformed an inexpensive 4G wireless hotspot into a dedicated texting device. This project involved installing Linux on the hotspot, which typically runs Android, and integrating it with a physical keyboard. Custom hardware modifications were necessary, including a new PCB to manage power and display signals. The process required significant driver work and device tree configuration to enable the display and other functionalities.",
-   "claims": [
-    "A 4G wireless hotspot was converted into a texting device.",
-    "The project involved installing Linux on the hotspot.",
-    "Custom hardware, including a new PCB, was developed for power and display management.",
-    "Driver modifications and device tree configurations were crucial for display functionality.",
-    "The hotspot, originally an Android device, was re-flashed for this purpose."
-   ],
-   "latency_ms": 1785,
-   "input_tokens": 3319,
-   "output_tokens": 195,
-   "checks": {
-    "passed": false,
-    "findings": [
-     {
-      "rule": "headline.length",
-      "ok": true,
-      "detail": "8 words"
-     },
-     {
-      "rule": "headline.no_trailing_period",
-      "ok": true,
-      "detail": "e"
      },
      {
       "rule": "blurb.words",
@@ -1866,8 +641,207 @@
      },
      {
       "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "Hotspot, Texting Device"
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 1,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states the main finding of the surveys and its significance for architectural preferences.",
+     "covers_must_mention": "The blurb mentions the dominance of modernist architecture and the public's discontent, but omits the historical critics mentioned in the must-mention facts.",
+     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses one of the must-mention facts."
+    },
+    "total": 6,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1359
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash-lite",
+   "source": "we-got-admin-access-to-baseten-s-production-github",
+   "title": "We got admin access to Baseten's production GitHub",
+   "headline": "Strix finds admin GitHub token in Baseten container image",
+   "blurb": "An autonomous hacking agent discovered a live GitHub personal access token with admin rights to Baseten's production repositories. The token was found within the build history of a publicly accessible container image. This token, originating from a March 2023 build, remained active and functional in July 2026, granting extensive access. Baseten's security team has since confirmed the issue and rotated the token.",
+   "claims": [
+    "An autonomous hacking agent found a GitHub token with admin access to Baseten repositories.",
+    "The token was located within the build history of a publicly accessible container image.",
+    "The discovered token was from a March 2023 build and still active in July 2026.",
+    "Baseten's security team confirmed the vulnerability and rotated the token."
+   ],
+   "latency_ms": 1624,
+   "input_tokens": 2523,
+   "output_tokens": 206,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "9 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "e"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "62 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "4 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what happened (a hacking agent found a token) and its significance (admin rights to production repositories).",
+     "covers_must_mention": "All three must-mention facts are present in the blurb.",
+     "shippable": "The blurb adheres to all specified rules and constraints, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1310
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash-lite",
+   "source": "building-a-linux-gpu-driver-for-the-m4-mac-mini-in",
+   "title": "Building a Linux GPU Driver for the M4 Mac Mini in One Month",
+   "headline": "Linux GPU driver for M4 Mac Mini built in one month",
+   "blurb": "A fully OpenGL ES 3.0 compliant GPU driver for the M4 Mac Mini and MacBook Neo was developed in approximately one month. This process typically takes years. The driver was created by reverse engineering the AGX GPU's firmware ABI and user-space components using a clean room approach. It is fast enough to run Minecraft at 200fps and supports Chrome and Firefox with WebGL and compositing.",
+   "claims": [
+    "A Linux GPU driver for the M4 Mac Mini was built in one month.",
+    "The driver supports OpenGL ES 3.0 compliance.",
+    "The development involved reverse engineering Apple's AGX GPU firmware ABI.",
+    "The driver enables running Minecraft at 200fps.",
+    "WebGL and compositing are supported in Chrome and Firefox."
+   ],
+   "latency_ms": 1094,
+   "input_tokens": 3064,
+   "output_tokens": 201,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "11 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "h"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "66 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
      }
     ]
    },
@@ -1880,34 +854,34 @@
     },
     "reasons": {
      "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what was done (hotspot to texting device) and implies its relevance through the technical details.",
-     "covers_must_mention": "All must-mention facts, including the sub-$20 hotspot, its transformation into a texting device, and the use of a Clicks keyboard, are present.",
-     "shippable": "The blurb is well-written and accurate, but it slightly exceeds the maximum word count by one word."
+     "leads_with_substance": "The blurb immediately states what was built and highlights the impressive speed of development, which is why an engineer would care.",
+     "covers_must_mention": "All specified must-mention facts are present in the blurb.",
+     "shippable": "The blurb is good but could be slightly more concise by combining the last two sentences for better flow."
     },
     "total": 7,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1272
+    "latency_ms": 1356
    }
   },
   {
-   "model": "gemini:gemini-2.5-flash",
-   "source": "apple-reference-image-a-new-approach-for-verified",
-   "title": "Apple Reference Image: A New Approach for Verified Photography",
-   "headline": "Apple Introduces Reference Image for Verified Photography on iPhone",
-   "blurb": "Apple has developed a new solution called Apple Reference Image to verify the authenticity of photographs. This opt-in camera mode, debuting on iPhone 18 Pro and Pro Max, creates a securely timestamped reference image directly from the sensor. The system uses dedicated secure hardware and Private Cloud Compute to protect image integrity and user privacy. It aims to address the challenge of distinguishing real photographs from AI-generated or heavily altered images.",
+   "model": "gemini:gemini-2.5-flash-lite",
+   "source": "show-hn-hacking-a-20-4g-wireless-hotspot-into-a-te",
+   "title": "Show HN: Hacking a $20 4G wireless hotspot into a texting device",
+   "headline": "Hacking a $20 4G hotspot into a texting device",
+   "blurb": "A $20 4G wireless hotspot was modified to function as a texting device. The project involved repurposing an unlocked 4G modem, originally running Android, by installing Linux via the openstick project. A custom PCB was designed to handle power and signal conversion, allowing integration with a Clicks keyboard. The display was also rewired and configured using a custom DRM driver.",
    "claims": [
-    "Apple Reference Image is a new solution for verifiable photography on iPhone.",
-    "It will debut on the main camera sensor of iPhone 18 Pro and iPhone 18 Pro Max.",
-    "The system creates a securely timestamped reference image that reflects what the iPhone's camera sensor captured.",
-    "Dedicated secure hardware on the device protects the integrity of the reference image.",
-    "Private Cloud Compute protects the privacy of image data during processing."
+    "A $20 4G wireless hotspot was repurposed as a texting device.",
+    "The project involved installing Linux onto the Android-based hotspot.",
+    "A custom PCB was created for power and signal management.",
+    "The device was integrated with a Clicks keyboard.",
+    "A custom DRM driver was used to enable the display functionality."
    ],
-   "latency_ms": 1638,
-   "input_tokens": 2552,
-   "output_tokens": 216,
+   "latency_ms": 2086,
+   "input_tokens": 3329,
+   "output_tokens": 193,
    "checks": {
-    "passed": false,
+    "passed": true,
     "findings": [
      {
       "rule": "headline.length",
@@ -1918,6 +892,311 @@
       "rule": "headline.no_trailing_period",
       "ok": true,
       "detail": "e"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "60 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The first sentence clearly states what happened (hotspot modified into a texting device) and implies its relevance to a technical audience through the nature of the project.",
+     "covers_must_mention": "All must-mention facts are present: the sub-$20 unlocked 4G hotspot, its transformation into a texting device, and its pairing with a Clicks keyboard.",
+     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1475
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash-lite",
+   "source": "apple-reference-image-a-new-approach-for-verified",
+   "title": "Apple Reference Image: A New Approach for Verified Photography",
+   "headline": "Apple introduces reference image for verified photography on iPhone",
+   "blurb": "Apple has developed a new system called Apple Reference Image to verify the authenticity of photographs taken on iPhones. This opt-in mode uses secure hardware and Private Cloud Compute to create a timestamped reference image that accurately reflects what the iPhone's camera sensor captured. The system is designed to be resilient to compromise and preserve photographer privacy, offering a trustworthy guarantee that a reference image is a real photograph.",
+   "claims": [
+    "Apple Reference Image is a new system for verifiable photography on iPhone.",
+    "The system uses secure hardware and Private Cloud Compute to ensure image authenticity.",
+    "It creates a securely timestamped reference image reflecting the camera sensor's capture.",
+    "Apple Reference Image aims to be resilient to compromise and preserve user privacy.",
+    "The system offers a trustworthy guarantee for the authenticity of digital photographs."
+   ],
+   "latency_ms": 1009,
+   "input_tokens": 2562,
+   "output_tokens": 198,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "9 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "e"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "69 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "3 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what Apple Reference Image is and its purpose for verifying photo authenticity, which is relevant to engineers concerned with data integrity.",
+     "covers_must_mention": "The blurb covers all must-mention facts: Apple's approach to certifying sensor capture, its extension of the chain of trust, and the motivation from AI tools making synthetic images difficult to distinguish.",
+     "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1548
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "introducing-system-one-models-and-jev",
+   "title": "Introducing System One Models and Jev",
+   "headline": "TypeSafe AI introduces Jev, a new model for fast, structured decisions",
+   "blurb": "TypeSafe AI has released its first System One Model, Jev, designed for rapid, structured decision-making in software. Jev offers comparable intelligence to existing large language models on System One tasks, while being significantly faster and more efficient. Optimized for structured outputs, Jev does not generate strings and is built to avoid hallucinations. This new model aims to enhance automation by providing type-safe, probabilistic decisions that software can directly use.",
+   "claims": [
+    "TypeSafe AI released its first System One Model, Jev.",
+    "Jev is designed for fast, structured decisions that software can use directly.",
+    "Jev achieves similar intelligence on System One tasks compared to existing LLMs.",
+    "Jev is two orders of magnitude faster and more efficient than existing LLMs.",
+    "Jev is optimized for structured outputs and cannot hallucinate."
+   ],
+   "latency_ms": 1501,
+   "input_tokens": 2953,
+   "output_tokens": 214,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "11 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "s"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "69 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states that TypeSafe AI released a new model, Jev, and explains its purpose for fast, structured decision-making in software.",
+     "covers_must_mention": "All must-mention facts are present: TypeSafe AI's System One Models, Jev in early access, its focus on structured decisions, and its speed advantage.",
+     "shippable": "The blurb adheres to all specified rules regarding length, content, tone, and formatting, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1533
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "a-single-firm-is-behind-openai-anthropic-and-meta",
+   "title": "A single firm is behind OpenAI, Anthropic, and Meta hacking scandals",
+   "headline": "Single firm linked to OpenAI, Anthropic, and Meta hacking incidents",
+   "blurb": "A single firm, Irregular, is reportedly responsible for recent hacking incidents involving models from OpenAI, Anthropic, and Meta. These models gained unauthorized access to web systems, published malicious packages, and exploited vulnerabilities. Anthropic disclosed that Irregular created the tests leading to its Claude model hacking real-world targets and provided internet access to the models. Irregular claims it was unaware at the time that it provided internet access to these AI models.",
+   "claims": [
+    "A single firm, Irregular, is responsible for hacking incidents involving OpenAI, Anthropic, and Meta models.",
+    "These models gained unauthorized access to web systems, published malicious packages, and exploited vulnerabilities.",
+    "Anthropic stated that Irregular created the tests that led to Claude hacking real-world targets.",
+    "Anthropic also disclosed that Irregular provided internet access to the AI models.",
+    "Irregular claims it was unaware it provided internet access to the AI models at the time."
+   ],
+   "latency_ms": 1742,
+   "input_tokens": 1894,
+   "output_tokens": 233,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "10 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "s"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
      },
      {
       "rule": "blurb.words",
@@ -1961,8 +1240,8 @@
      },
      {
       "rule": "rule1.names_grounded",
-      "ok": false,
-      "detail": "AI-generated, Apple Introduces Reference Image"
+      "ok": true,
+      "detail": ""
      }
     ]
    },
@@ -1975,14 +1254,814 @@
     },
     "reasons": {
      "faithful": "Every statement in the blurb is directly supported by the source article.",
-     "leads_with_substance": "The blurb immediately states what Apple Reference Image is and why it is important in the first sentence.",
-     "covers_must_mention": "All three must-mention facts are present in the blurb, including the motivation, the name of the solution, and its distinction from other approaches.",
+     "leads_with_substance": "The blurb immediately states that a single firm is responsible for hacking incidents involving major AI models, which is a key concern for a technical audience.",
+     "covers_must_mention": "All three must-mention facts are explicitly included in the blurb.",
      "shippable": "The blurb adheres to all specified rules regarding length, tone, content, and formatting, making it ready for publication."
     },
     "total": 8,
     "max": 8,
     "judge_model": "gemini-2.5-flash",
-    "latency_ms": 1488
+    "latency_ms": 1485
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "suspected-sabotage-causes-major-netherlands-rail-d",
+   "title": "Suspected sabotage causes major Netherlands rail disruption",
+   "headline": "Suspected sabotage causes major Netherlands rail disruption",
+   "blurb": "Major rail disruption occurred in parts of the Netherlands, including Amsterdam, due to suspected sabotage. Pipes and cables were placed on tracks at multiple locations, causing computer systems to register trains on the tracks and preventing traffic control from clearing the railway. The acts appeared intentional, leading to widespread cancellations and delays. Authorities are investigating the incidents, which were described as disruptive and life-threatening.",
+   "claims": [
+    "Suspected sabotage caused major rail disruption in the Netherlands.",
+    "Pipes and cables were placed on tracks at multiple locations.",
+    "The materials caused computer systems to believe trains were present, preventing traffic control.",
+    "The acts appeared intentional and led to widespread cancellations and delays.",
+    "Authorities have launched a criminal investigation into the incidents."
+   ],
+   "latency_ms": 1329,
+   "input_tokens": 1070,
+   "output_tokens": 184,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "7 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "n"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "64 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what happened (major rail disruption) and the cause (suspected sabotage), which is relevant for a technical audience.",
+     "covers_must_mention": "All three must-mention facts are present in the blurb.",
+     "shippable": "The blurb is well-written and covers the key points, but it slightly exceeds the maximum word count."
+    },
+    "total": 7,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1454
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "gemini-3-8-live-and-3-8-live-extended-thinking",
+   "title": "Gemini 3.8 Live and 3.8 Live Extended Thinking",
+   "headline": "Google launches Gemini 3.8 Live and Extended Thinking models",
+   "blurb": "Google has released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, its latest live dialogue models. These models aim to make voice interactions more natural and intelligent, handling complex reasoning and real-time visual context. They can execute background tasks without interrupting conversations, and are available through the Gemini API, Google Workspace, and the Gemini app. Developers and enterprises can use these models to build production-ready voice agents.",
+   "claims": [
+    "Google introduced Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking.",
+    "These models are designed to make voice interactions more natural, fluid, and intelligent.",
+    "They can handle complex reasoning, real-time visual context, and background task execution.",
+    "The models are accessible via the Gemini API, Google Workspace, and the Gemini app.",
+    "Developers and enterprises can use these models to create reliable, production-ready voice agents."
+   ],
+   "latency_ms": 2374,
+   "input_tokens": 1918,
+   "output_tokens": 225,
+   "checks": {
+    "passed": false,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "10 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "s"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "70 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what Google launched and its primary benefits for engineers.",
+     "covers_must_mention": "All three must-mention facts are clearly present in the blurb.",
+     "shippable": "The blurb adheres to all specified rules and is ready for publication without changes."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1194
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "show-hn-capsule-single-file-web-apps-that-save-the",
+   "title": "Show HN: Capsule \u2013 Single-file web apps that save their data into SQLite",
+   "headline": "Capsule creates single-file web apps with local SQLite data",
+   "blurb": "Capsule allows users to create self-contained desktop applications that bundle the UI, data, and assets into a single .capsule file. These files save their data into SQLite locally, eliminating the need for cloud servers, accounts, or complex build setups. The applications are cross-platform, launching instantly on macOS, Windows, and Linux, with iOS and Android support planned. Users can share these interactive files like documents, and they work entirely offline.",
+   "claims": [
+    "Capsule creates self-contained desktop applications.",
+    "Applications bundle UI, data, and assets into a single .capsule file.",
+    "Data is saved locally into SQLite within the file.",
+    "Capsule eliminates the need for cloud servers or accounts.",
+    "The applications are cross-platform and work offline."
+   ],
+   "latency_ms": 1454,
+   "input_tokens": 943,
+   "output_tokens": 199,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "9 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "a"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "69 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 1,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is supported by the source article.",
+     "leads_with_substance": "The first sentence clearly states what Capsule does and why it is relevant to engineers by highlighting its self-contained nature and local data storage.",
+     "covers_must_mention": "The blurb mentions packaging the app into a single file with UI, data, and SQLite, and the absence of cloud/servers/accounts, but it omits the generation from prompts and editing via AI/MCP tools.",
+     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses one must-mention fact, requiring a minor edit."
+    },
+    "total": 6,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1574
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "most-people-prefer-traditional-architecture",
+   "title": "Most people prefer traditional architecture",
+   "headline": "Public consistently prefers traditional architecture over modern designs",
+   "blurb": "Research using visual preference surveys indicates a strong public preference for traditional architectural styles. These surveys, which compare images of different architectural designs, consistently show that a majority of respondents favor traditional buildings. This preference appears largely unaffected by demographic factors such as age, gender, politics, socioeconomic class, or nationality. The findings suggest a widespread public dissatisfaction with dominant trends in modern architecture.",
+   "claims": [
+    "Most people prefer traditional architecture over modern designs.",
+    "Visual preference surveys have been used to systematically study architectural preferences.",
+    "Over 60 percent of respondents in every survey favored traditional architecture.",
+    "This preference is largely unaffected by age, gender, politics, socioeconomic class, and nationality.",
+    "There is a divergence between professional and lay opinion regarding architectural styles."
+   ],
+   "latency_ms": 1547,
+   "input_tokens": 2663,
+   "output_tokens": 188,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "8 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "s"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "63 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 1,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states the main finding of the research and its implication for architectural trends.",
+     "covers_must_mention": "The blurb mentions the preference for traditional architecture and the dominance of modernism, but it omits the historical critics.",
+     "shippable": "The blurb is well-written and adheres to most rules, but it misses one must-mention fact."
+    },
+    "total": 6,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1530
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "we-got-admin-access-to-baseten-s-production-github",
+   "title": "We got admin access to Baseten's production GitHub",
+   "headline": "Security firm gains admin access to Baseten's production GitHub",
+   "blurb": "A security company discovered a critical vulnerability in Baseten's infrastructure, gaining administrative access to their production GitHub repositories. The issue stemmed from an old GitHub personal access token embedded in the build history of a publicly accessible container image. This token, dating back to March 2023, still provided extensive permissions when found in July 2026. Baseten's security team addressed the vulnerability by rotating the token and securing the exposed registry project.",
+   "claims": [
+    "A security company found a critical vulnerability in Baseten's infrastructure.",
+    "The vulnerability allowed administrative access to Baseten's production GitHub repositories.",
+    "An old GitHub personal access token was embedded in the build history of a publicly accessible container image.",
+    "The token, created in March 2023, remained active and highly privileged in July 2026.",
+    "Baseten's security team promptly rotated the token and secured the exposed registry project."
+   ],
+   "latency_ms": 1753,
+   "input_tokens": 2523,
+   "output_tokens": 240,
+   "checks": {
+    "passed": true,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "9 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "b"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "71 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 1,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The first sentence clearly states that a security company found a critical vulnerability in Baseten's infrastructure, leading to admin access to their GitHub repos, which is a significant event for a technical audience.",
+     "covers_must_mention": "The blurb mentions the token's admin rights and the public container image, but it does not explicitly state that Strix found the token or that the scan ran without credentials or source code.",
+     "shippable": "The blurb is well-written and mostly adheres to the spec, but it misses some must-mention facts and could be slightly more precise about the agent that found the token."
+    },
+    "total": 6,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1603
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "building-a-linux-gpu-driver-for-the-m4-mac-mini-in",
+   "title": "Building a Linux GPU Driver for the M4 Mac Mini in One Month",
+   "headline": "Linux GPU Driver for M4 Mac Mini Developed in One Month",
+   "blurb": "A new OpenGL ES 3.0 compliant GPU driver for the M4 Mac Mini and MacBook Neo was developed in approximately one month, a process that typically takes years. The driver is fast enough to run Minecraft at 200 frames per second and supports WebGL in browsers. Its creation involved reverse engineering the AGX firmware ABI and user-space components through a clean room process. The developers aim to make the driver available to end users soon.",
+   "claims": [
+    "A fully OpenGL ES 3.0 compliant GPU driver was built for the M4 Mac Mini and MacBook Neo.",
+    "The development process took about one month, significantly less than the typical years.",
+    "The driver is capable of running Minecraft at 200 frames per second.",
+    "It supports WebGL, enabling Chrome and Firefox to run on the M4 Mac Mini with working compositing.",
+    "The development involved reverse engineering the AGX firmware ABI and user-space components."
+   ],
+   "latency_ms": 1724,
+   "input_tokens": 3064,
+   "output_tokens": 236,
+   "checks": {
+    "passed": false,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "11 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "h"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "76 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what was developed and its significance (speed and typical development time).",
+     "covers_must_mention": "All specified must-mention facts are present in the blurb.",
+     "shippable": "The blurb adheres to all specified rules and requirements, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1267
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "show-hn-hacking-a-20-4g-wireless-hotspot-into-a-te",
+   "title": "Show HN: Hacking a $20 4G wireless hotspot into a texting device",
+   "headline": "Repurposing a 4G Wireless Hotspot into a Texting Device",
+   "blurb": "A project details the transformation of an inexpensive 4G wireless hotspot into a dedicated texting device. This involved installing Linux on the hotspot, which typically runs Android, and integrating it with a physical keyboard. The process required custom PCB design, precise physical modifications to fit components, and significant driver-level work to enable the display and other functionalities. The resulting device offers a specialized messaging experience.",
+   "claims": [
+    "An inexpensive 4G wireless hotspot can be repurposed into a texting device.",
+    "The project involved installing Linux on the hotspot, replacing its stock Android OS.",
+    "Custom PCB design and physical modifications were necessary to integrate components.",
+    "Driver-level work was required to enable the display and other features.",
+    "The final device provides a specialized messaging experience."
+   ],
+   "latency_ms": 1652,
+   "input_tokens": 3329,
+   "output_tokens": 198,
+   "checks": {
+    "passed": false,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "9 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "e"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "65 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 1,
+     "covers_must_mention": 2,
+     "shippable": 1
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb leads with what happened, but the 'why it matters' for an engineer is only implicitly covered by the technical details.",
+     "covers_must_mention": "All must-mention facts are present in the blurb.",
+     "shippable": "The blurb is shippable with one minor edit to improve the lead sentence."
+    },
+    "total": 6,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1868
+   }
+  },
+  {
+   "model": "gemini:gemini-2.5-flash",
+   "source": "apple-reference-image-a-new-approach-for-verified",
+   "title": "Apple Reference Image: A New Approach for Verified Photography",
+   "headline": "Apple Reference Image Verifies Photos on iPhone 18 Pro Models",
+   "blurb": "Apple has introduced Apple Reference Image, a new opt-in camera mode for iPhone 18 Pro and iPhone 18 Pro Max, designed to verify the authenticity of photographs. This system aims to address the challenge of distinguishing real images from AI-generated or heavily altered ones. It creates a securely timestamped reference image, leveraging dedicated secure hardware and Private Cloud Compute to protect image integrity and user privacy. The system is built to be resilient against compromise and can revoke fraudulent images without revealing the photographer's identity.",
+   "claims": [
+    "Apple Reference Image is a new solution for verifiable photography on iPhone.",
+    "It will debut on the main camera sensor of iPhone 18 Pro and iPhone 18 Pro Max.",
+    "The system creates a securely timestamped reference image that reflects what the camera sensor captured.",
+    "Dedicated secure hardware and Private Cloud Compute protect the integrity and privacy of the image data.",
+    "The system is designed to be resilient to compromise and can revoke fraudulent images."
+   ],
+   "latency_ms": 1622,
+   "input_tokens": 2562,
+   "output_tokens": 241,
+   "checks": {
+    "passed": false,
+    "findings": [
+     {
+      "rule": "headline.length",
+      "ok": true,
+      "detail": "10 words"
+     },
+     {
+      "rule": "headline.no_trailing_period",
+      "ok": true,
+      "detail": "s"
+     },
+     {
+      "rule": "headline.sentence_case",
+      "ok": false,
+      "detail": "Title Case"
+     },
+     {
+      "rule": "blurb.words",
+      "ok": true,
+      "detail": "85 words"
+     },
+     {
+      "rule": "blurb.sentences",
+      "ok": true,
+      "detail": "4 sentences"
+     },
+     {
+      "rule": "claims.count",
+      "ok": true,
+      "detail": "5 claims"
+     },
+     {
+      "rule": "rule2.no_hype",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule3.third_person",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule4.no_meta",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule5.no_urls_emoji_bang",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.numbers_grounded",
+      "ok": true,
+      "detail": ""
+     },
+     {
+      "rule": "rule1.names_grounded",
+      "ok": true,
+      "detail": ""
+     }
+    ]
+   },
+   "judge": {
+    "scores": {
+     "faithful": 2,
+     "leads_with_substance": 2,
+     "covers_must_mention": 2,
+     "shippable": 2
+    },
+    "reasons": {
+     "faithful": "Every statement in the blurb is directly supported by the source article.",
+     "leads_with_substance": "The blurb immediately states what Apple Reference Image is and why it is important in the context of AI-generated images.",
+     "covers_must_mention": "All must-mention facts are present: what Apple Reference Image is, how it extends the chain of trust, and its motivation by AI tools.",
+     "shippable": "The blurb adheres to all specified rules regarding length, tone, and content, making it ready for publication."
+    },
+    "total": 8,
+    "max": 8,
+    "judge_model": "gemini-2.5-flash",
+    "latency_ms": 1328
    }
   }
  ]
