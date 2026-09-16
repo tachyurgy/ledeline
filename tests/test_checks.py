@@ -46,3 +46,26 @@ def test_number_with_thousands_separator_matches_source():
 
 def test_word_count_window():
     assert word_count("one two three") == 3
+
+
+def test_title_case_headline_is_not_a_list_of_names():
+    src = "Parts of the Netherlands were hit by rail disruption after suspected sabotage, ProRail said."
+    # Title Case carries no name signal, so the names check ignores such a headline and
+    # headline.sentence_case flags it instead. A sentence-case headline is checked word by word.
+    assert ungrounded_names("", src, headline="Suspected Sabotage Disrupts Netherlands Rail Network") == []
+    assert ungrounded_names("", src, headline="Suspected sabotage disrupts Belgian rail network") == ["Belgian"]
+    r = check("Suspected Sabotage Disrupts Netherlands Rail Network", "x", [], src)
+    assert "headline.sentence_case" in r.failed_rules
+    r = check("Suspected sabotage disrupts Netherlands rail network", "x", [], src)
+    assert "headline.sentence_case" not in r.failed_rules
+
+
+def test_trailing_punctuation_does_not_break_grounding():
+    src = "Chrome and Firefox run WebGL on the M4."
+    assert ungrounded_names("The driver runs WebGL.", src) == []
+
+
+def test_hyphenated_compound_is_grounded_by_its_head():
+    src = "The keyboard is MFi certified. AI tools are everywhere."
+    assert ungrounded_names("An MFi-compatible keyboard and AI-generated images.", src) == []
+    assert ungrounded_names("An Bluetooth-compatible keyboard.", src) == ["Bluetooth-compatible"]

@@ -70,29 +70,46 @@ def ungrounded_numbers(blurb: str, source: str) -> list[str]:
     return out
 
 
+def is_title_case(headline: str) -> bool:
+    words = [w for w in re.findall(r"[A-Za-z][A-Za-z'-]*", headline) if len(w) > 3]
+    if len(words) < 4:
+        return False
+    caps = sum(1 for w in words if w[0].isupper())
+    return caps / len(words) > 0.6
+
+
+def _stem(w: str) -> str:
+    w = w.lower().rstrip(".,;:'\"")
+    for suf in ("ing", "es", "ed", "s"):
+        if len(w) > 4 and w.endswith(suf):
+            return w[: -len(suf)]
+    return w
+
+
 def ungrounded_names(blurb: str, source: str, headline: str = "") -> list[str]:
-    """Capitalised runs in the blurb that never appear in the source (case-insensitive,
-    whitespace-insensitive). Sentence-initial stopwords are ignored. A multi-word run is
-    accepted if the whole run appears OR every word of it appears somewhere in the source."""
+    """Capitalised words in the blurb or headline whose stem never appears in the source.
+
+    First version compared whole capitalised RUNS, which made every Title Case headline fail
+    ("Suspected Sabotage Disrupts Netherlands Rail Network" is five words, one of them a name).
+    Now each word is judged on its own with light stemming, so "Disrupts" is grounded by
+    "disruption" and "Microsoft" is still caught. Sentence-initial words are skipped: they are
+    capitalised by grammar, and if they are a real name they will recur mid-sentence."""
     src = _norm(source)
+    if is_title_case(headline):
+        headline = ""  # capitalisation carries no name signal in Title Case; headline.sentence_case flags it instead
     text = blurb + " " + headline
-    # single capitalised words that open a sentence are capitalised by grammar, not by being
-    # a name ("Teams get faster responses"); multi-word runs at a sentence start still count.
-    sentence_initial = set()
-    for m in re.finditer(r"(?:^|[.!?]\s+)([A-Z][A-Za-z0-9+.#-]{2,})(?!\s+[A-Z])", text):
-        sentence_initial.add((m.start(1), m.group(1)))
+    sentence_initial = set(m.start(1) for m in re.finditer(r"(?:^|[.!?]\s+)([A-Z][A-Za-z0-9+.#-]{2,})", text))
     out = []
-    for m in CAPS.finditer(text):
-        run = m.group(1)
-        if (m.start(1), run) in sentence_initial:
+    for m in re.finditer(r"\b([A-Z][A-Za-z0-9+#-]{2,})", text):
+        if m.start(1) in sentence_initial or m.start(1) >= len(blurb) + 1 and m.start(1) - len(blurb) - 1 == 0:
             continue
-        words = [w for w in run.split() if w not in STOP]
-        if not words:
+        w = m.group(1)
+        if w in STOP:
             continue
-        run2 = " ".join(words)
-        if _norm(run2) in src or all(_norm(w) in src for w in words):
+        head = w.split("-")[0]  # "MFi-compatible" is grounded by "MFi"
+        if _norm(w) in src or _stem(w) in src or _norm(head) in src or _stem(head) in src:
             continue
-        out.append(run2)
+        out.append(w)
     return sorted(set(out))
 
 
@@ -101,6 +118,7 @@ def check(headline: str, blurb: str, claims: list[str], source: str) -> CheckRes
     hw = word_count(headline)
     r.findings.append(Finding("headline.length", 0 < hw <= 12, f"{hw} words"))
     r.findings.append(Finding("headline.no_trailing_period", not headline.rstrip().endswith("."), headline[-1:] if headline else ""))
+    r.findings.append(Finding("headline.sentence_case", not is_title_case(headline), "Title Case" if is_title_case(headline) else ""))
     wc = word_count(blurb); sc = sentence_count(blurb)
     r.findings.append(Finding("blurb.words", 45 <= wc <= 90, f"{wc} words"))
     r.findings.append(Finding("blurb.sentences", 2 <= sc <= 4, f"{sc} sentences"))

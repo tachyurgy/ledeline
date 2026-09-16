@@ -101,7 +101,16 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "results" / f"run-{time.strftime('%Y%m%d-%H%M%S')}.json"))
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--sleep", type=float, default=2.0, help="seconds between calls (free-tier rate limits)")
+    ap.add_argument("--rescore", help="re-run the deterministic checks over an existing results file (no model calls); judge scores are kept")
     a = ap.parse_args()
+    if a.rescore:
+        old = json.loads(Path(a.rescore).read_text()); corpus = {c["id"]: c for c in load_corpus()}
+        for r in old["rows"]:
+            if not r.get("error"):
+                r["checks"] = checks.check(r["headline"], r["blurb"], r["claims"], corpus[r["source"]]["text"]).to_dict()
+        old["summary"] = summarize(old["rows"]); old["rescored_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+        old["gates"] = [ship_gate(m, old["baseline"], old["rows"]) for m in old["models"] if old.get("baseline") and m != old["baseline"]]
+        Path(a.out).write_text(json.dumps(old, indent=1)); print(json.dumps({"summary": old["summary"], "gates": old["gates"]}, indent=1)); return
     spec = workflow.load_spec()
     corpus = load_corpus()
     if a.limit:

@@ -4,7 +4,7 @@ You turn one source article into a newsletter blurb for a technical audience.
 
 ## Output
 Return JSON with exactly these keys:
-- `headline`: at most 12 words, no trailing period, no clickbait.
+- `headline`: at most 12 words, sentence case (capitalise only names and products), no trailing period, no clickbait.
 - `blurb`: 2 to 4 sentences, 45 to 90 words, plain prose.
 - `claims`: a list of 2 to 5 short factual claims the blurb makes, each one sentence.
 
